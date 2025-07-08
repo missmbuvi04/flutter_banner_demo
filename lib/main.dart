@@ -16,13 +16,14 @@ class MyApp extends StatelessWidget {
   }
 }
 
-/// Screen that displays a 2 × 2 grid of shoe cards.
+
 class ProductBannerPage extends StatelessWidget {
   const ProductBannerPage({super.key});
 
   @override
   Widget build(BuildContext context) {
-    // Hard‑coded product list: first two have a banner.
+    // Create a list of ProductCard widgets
+    // Each ProductCard has an image, price, and a boolean to show the banner
     final products = [
       ProductCard(
         imagePath: 'assets/image1.jpeg',
@@ -62,8 +63,7 @@ class ProductBannerPage extends StatelessWidget {
   }
 }
 
-/// Re‑usable widget that shows one product card.
-/// If [showBanner] is true, the card is wrapped in a Banner widget.
+
 class ProductCard extends StatelessWidget {
   final String imagePath;
   final String price;
@@ -78,7 +78,8 @@ class ProductCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // The underlying card
+    // 1️⃣ Create a card with an image and price
+    // 2️⃣ If [showBanner] is true, wrap the card in a Banner
     final card = Card(
       elevation: 3,
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
@@ -91,11 +92,11 @@ class ProductCard extends StatelessWidget {
               imagePath,
               height: 120,
               width: double.infinity,
-              fit: BoxFit.cover, // fills the width while preserving aspect
+              fit: BoxFit.cover, // Ensures the image covers the area without distortion
             ),
           ),
           const SizedBox(height: 8),
-          // Price label
+          
           Text(
             price,
             style: const TextStyle(fontWeight: FontWeight.bold),
@@ -105,16 +106,17 @@ class ProductCard extends StatelessWidget {
       ),
     );
 
-    // Optionally overlay the Banner
+    // If showBanner is true, wrap the card in a Banner widget
     if (showBanner) {
       return Banner(
-        // 1️⃣ message – the text on the ribbon
-        message: 'OFFER!',
-        // 2️⃣ location – corner in which the ribbon appears
-        location: BannerLocation.topEnd,
+        // message – text displayed in the banner
+
+        message: 'SALE!',
+        
+        location: BannerLocation.bottomStart,
         // 3️⃣ color – ribbon background colour
-        color: Colors.redAccent,
-        textStyle: const TextStyle(fontWeight: FontWeight.bold),
+        color: Colors.green,
+        textStyle: const TextStyle(fontWeight: FontWeight.bold, fontSize :16,),
         child: card,
       );
     }
