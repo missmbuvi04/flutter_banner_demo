@@ -1,5 +1,5 @@
 # flutter_banner_demo
-# This a flutter project uses a banner widget found in a product card widget to display promotional message or a message that need attention.
+# This a flutter project which uses a banner widget found in a product card widget to display promotional message or a message that need attention.
 
 # Getting started 
 # How to run the project
